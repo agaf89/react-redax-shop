@@ -21,8 +21,9 @@
         border: 1px solid rgba(256,256,256, .2);
         background-color: rgba(0,0,0,.7);
         box-shadow: 0 0 20px rgba(256,256,256, .1);
+        padding-right: 20px;
         &-title, &-price  {
-            width: 250px;
+            width: 310px;
             text-align: center;
             color: #fff;
             font-size: 24px;
@@ -31,6 +32,30 @@
             height: 125px;
             width: 250px;
             object-fit: cover;
+            padding: 5px;
+        }
+        &-price{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        &-btn{
+            background-color: transparent;
+            border: none;
+            font-size: 20px;
+            font-weight: 900;
+            color: white;
+            margin: 0 25px;
+            padding: 0 15px;
+            cursor: pointer;
+            &:focus{
+                background-color: transparent;
+                border: none;
+                outline-style: none;
+            }
+            &:hover{
+                color: tomato;
+            }
         }
     }
     &__close {

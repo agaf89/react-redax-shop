@@ -4,18 +4,32 @@ const menuLoaded = (newMenu) => {
         payload: newMenu
     }
 }
-const menuRequsted = (newMenu) => {
+const menuRequsted = () => {
     return {
         type: 'MENU_REQUESTED',
     }
 }
-const menuError = (newMenu) => {
+const menuError = () => {
     return {
         type: 'MENU_ERROR',
+    }
+}
+const addedToCart = (id) => {
+    return {
+        type: 'ITEM_ADD_TO_CART',
+        payload: id
+    }
+}
+const deleteFromCart = (id) => {
+    return {
+        type: 'ITEM_REMOVE_FROM_CART',
+        payload: id
     }
 }
 export {
     menuLoaded,
     menuRequsted,
-    menuError
+    menuError,
+    addedToCart,
+    deleteFromCart
 }

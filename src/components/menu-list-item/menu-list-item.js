@@ -4,13 +4,14 @@ import phone from './smartphone.svg'
 import tablet from './ipad.svg'
 import './menu-list-item.scss';
 
-const MenuListItem = ({menuItem}) => {
-    const {title, price, url, category} = menuItem
+const MenuListItem = ({menuItem, onAddToCart}) => {
+    const {title, price, url, category, id} = menuItem
     const iconObj ={
         laptop,
         phone,
         tablet
     }
+    
     return (
         <li className="menu__item">
             <div className="menu__title">{title}</div>
@@ -18,7 +19,10 @@ const MenuListItem = ({menuItem}) => {
             <div className="menu__category">Category: <span>{category}</span></div>
             <div className="menu__price">Price: <span>{price}$</span></div>
             <div className="menu__icon"><img src={iconObj[category]} alt={title}/></div>
-            <button className="menu__btn">Add to cart</button>
+            <button onClick={() => {
+                
+                return onAddToCart(id)
+            }} className="menu__btn">Add to cart</button>
         </li>
     )
 }

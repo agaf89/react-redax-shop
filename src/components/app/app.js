@@ -5,11 +5,9 @@ import { Route, Switch } from 'react-router-dom'
 
 
 const App = () => {
-    
-    
     return (
         <div style={{background: `linear-gradient(90deg, #b9deed, #efefef)`}} className="app">
-            <AppHeader total={50}/>
+            <AppHeader/>
             <Switch>
                 <Route path='/' exact component={MainPage}/>
                 <Route path='/total'  component={CartPage}/>
