@@ -1,9 +1,9 @@
 import React from 'react';
 import './cart-table.scss';
 import {connect} from 'react-redux'
-import {deleteFromCart} from '../../actions'
+import {deleteFromCart, plusInCart, minusInCart} from '../../actions'
 
-const CartTable = ({items, deleteFromCart}) => {
+const CartTable = ({items, deleteFromCart, plusInCart, minusInCart}) => {
     
     
     return (
@@ -20,9 +20,9 @@ const CartTable = ({items, deleteFromCart}) => {
                                 <div className="cart__item-title">{title}</div>
                                 <div className="cart__item-price">
                                      {price * qtty + ' $'} 
-                                    <button className='cart__item-btn'>—</button>
+                                    <button onClick={ () => minusInCart(id) } className='cart__item-btn'>—</button>
                                     <div className='cart__item-count"'>{qtty}</div>
-                                    <button className='cart__item-btn'>+</button>
+                                    <button onClick={ () => plusInCart(id) } className='cart__item-btn'>+</button>
                                     
                                 </div>
                                 
@@ -41,7 +41,9 @@ const mapStateToProps = ({items}) => {
     }
 }
 const mapDispatchToProps = {
-    deleteFromCart
+    deleteFromCart,
+    plusInCart,
+    minusInCart
 }
 
 

@@ -6,7 +6,6 @@ const initialState = {
     totalPrice: null
         
 }
-
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'MENU_LOADED':
@@ -31,7 +30,6 @@ const reducer = (state = initialState, action) => {
                 error: true
             };
         case 'ITEM_ADD_TO_CART':
-            
             const id = action.payload
             const itemInd = state.items.findIndex(item => item.id === id);
             if (itemInd >= 0){
@@ -49,8 +47,7 @@ const reducer = (state = initialState, action) => {
                     ],
                     totalPrice: state.totalPrice + newItem.price
                 }
-            } 
-
+            }
             // товара раньше не было в корзине
             const item = state.menu.find(item => item.id === id);
             const newItem = {
@@ -60,7 +57,6 @@ const reducer = (state = initialState, action) => {
                 id: item.id,
                 qtty: 1
             };
-            
             return {
                 ...state,
                 items: [
@@ -80,7 +76,40 @@ const reducer = (state = initialState, action) => {
                     ...state.items.slice(itemIndex + 1)
                 ], 
                 totalPrice: state.totalPrice - price
+            };
+        case 'PLUS_IN_CART':
+            const ind = action.payload
+            const itemInState = state.items.find(item => item.id === ind);
+            const newsItems = {
+                ...itemInState,
+                qtty: ++itemInState.qtty
             }
+            return {
+                ...state, 
+                items: [
+                    ...state.items,
+                ], 
+                totalPrice: state.totalPrice + newsItems.price
+            };
+        case 'MINUS_IN_CART':
+            const indx = action.payload
+            const itemInStates = state.items.find(item => item.id === indx);
+            if (itemInStates.qtty === 0){
+                return state
+            } else {
+                const newsItemss = {
+                    ...itemInStates,
+                    qtty: --itemInStates.qtty
+                }
+                return {
+                    ...state, 
+                    items: [
+                        ...state.items,
+                    ], 
+                    totalPrice: state.totalPrice - newsItemss.price
+                };
+            }
+                
         default:
             return state;
     }

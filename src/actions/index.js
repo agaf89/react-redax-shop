@@ -26,10 +26,24 @@ const deleteFromCart = (id) => {
         payload: id
     }
 }
+const plusInCart = (id) => {
+    return {
+        type: 'PLUS_IN_CART',
+        payload: id
+    }
+}
+const minusInCart = (id) => {
+    return {
+        type: 'MINUS_IN_CART',
+        payload: id
+    }
+}
 export {
     menuLoaded,
     menuRequsted,
     menuError,
     addedToCart,
-    deleteFromCart
+    deleteFromCart,
+    plusInCart,
+    minusInCart
 }
