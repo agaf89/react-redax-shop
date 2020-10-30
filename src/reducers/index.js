@@ -48,7 +48,7 @@ const reducer = (state = initialState, action) => {
                     totalPrice: state.totalPrice + newItem.price
                 }
             }
-            // товара раньше не было в корзине
+           
             const item = state.menu.find(item => item.id === id);
             const newItem = {
                 title: item.title,
